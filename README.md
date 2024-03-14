@@ -1,66 +1,23 @@
-## Foundry
+# Foundry Project Template for ThunderCore
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+* This is the Foundry project template configured for the ThunderCore blockchain
 
-Foundry consists of:
+After creating an account named `deployer` via `cast wallet new`, try:
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
+```
+$ forge script --rpc-url thunder-testnet --broadcast --account deployer ./script/Counter.s.sol
 ```
 
-### Test
+Reading from the contract:
 
-```shell
-$ forge test
+```
+$ cast call --rpc-url thunder-testnet <YOUR_CONTRACT_ADDR> 'number()'
+
 ```
 
-### Format
+Writing to the contract:
 
-```shell
-$ forge fmt
 ```
+$ cast send --rpc-url thunder-testnet --account deployer <YOUR_CONTRACT_ADDR> 'increment()'
 
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
 ```
